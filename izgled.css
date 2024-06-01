@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background: #222;
+}
+
+.pretraga{
+    width:90%;
+    max-width: 400px;
+    background: linear-gradient(135deg, #453396, #258867);
+    color: white;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+}
+
+.search{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*stavi ih svakopg na kraj*/
+}
+
+.search input{
+    border:0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border-radius: 17px;
+    font-size: 16px;
+    width: 100%;
+    margin-right: 1cm;
+
+}
+
+.search button{
+    width: 55px;
+    height: 42px;
+   border-radius: 50%;
+   border: 0;
+   outline: 0;
+   cursor: pointer; 
+}
+
+.search button img{
+    width:13px;
+    
+}
+
+.slikica{
+    width:170px;
+    margin-top:30px
+}
+
+.vreme h1{
+    font-size: 80px;
+    font-weight: 500;
+}
+
+.vreme h2{
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.detalji{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px;
+}
+
+.kol{
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.kol img{
+    width:40px;
+    margin-right: 10px;
+}
+
+.vlaznost, .vetar{
+    font-size:20px;
+}
+
+.vreme{
+    display:none;
+}
+
+.error{
+    text-align: left;
+    margin-top: 1px;
+    font-size: 13px;
+    margin-left: 8px;
+    display: none;
+}
