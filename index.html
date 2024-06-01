@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="izgled.css">
+</head>
+<body>
+
+    <div class="pretraga">
+        <div class="search">
+            <input type="text" placeholder="Unesite grad">
+            <button><img src=img/search.png></button>
+        </div>
+
+        <div class="error">
+            <p>Unesite pravilno grad</p>
+        </div>
+
+            <div class="vreme">
+                 <img src="img/clear.png" class="slikica">
+                 <h1 class="temperatura">22C°</h1>
+                 <h2 class="city">Novi Sad</h2>
+                 <div class="detalji">
+                    <div class="kol">
+                        <img src="img/humidity.png">
+                        <div>
+                            <p class="vlaznost">15%</p>
+                            <p>Vlaznost</p>
+                        </div>
+                    </div>
+                    <div class="kol">
+                        <img src="img/wind.png">
+                        <div>
+                            <p class="vetar">5km/h</p>
+                            <p>Brzina vetra</p>
+                        </div>
+                    </div>
+
+                 </div>
+            </div>
+
+    </div>
+    
+<script>
+    const apiKey = "c09d104c0de8fd2a62eee64c6109137c";
+    const apiUrl="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+    const searchBox = document.querySelector(".pretraga input");
+    const searchBtn = document.querySelector(".pretraga button");
+    const slikica = document.querySelector(".slikica");
+
+    async function proveriVreme(city) {
+        const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+        
+        if(response.status == 404) {
+            document.querySelector(".error").style.display = "block";
+            document.querySelector(".vreme").style.display = "none";
+        }else {
+
+            var data = await response.json();
+
+
+document.querySelector(".city").innerHTML = data.name;
+document.querySelector(".temperatura").innerHTML =Math.round(data.main.temp) + "°C";
+document.querySelector(".vlaznost").innerHTML = data.main.humidity + "%";
+document.querySelector(".vetar").innerHTML = data.wind.speed + "km/h";
+
+if(data.weather[0].main == "Clouds") {
+    slikica.src = "img/clouds.png"
+}
+
+else if(data.weather[0].main == "Clear") {
+    slikica.src = "img/clear.png"
+}
+
+
+else if(data.weather[0].main == "Drizzle") {
+    slikica.src = "img/drizzle.png"
+}
+
+
+else if(data.weather[0].main == "Humidity") {
+    slikica.src = "img/humidity.png"
+}
+
+
+else if(data.weather[0].main == "Mist") {
+    slikica.src = "img/mist.png"
+}
+
+
+else if(data.weather[0].main == "Rain") {
+    slikica.src = "img/rain.png"
+}
+
+
+else if(data.weather[0].main == "Snow") {
+    slikica.src = "img/snow.png"
+}
+
+
+else if(data.weather[0].main == "Wind") {
+    slikica.src = "img/wind.png"
+}
+
+document.querySelector(".vreme").style.display = "block";
+document.querySelector(".error").style.display = "none";
+        }
+
+    }
+
+    
+
+    searchBtn.addEventListener("click", ()=>{proveriVreme(searchBox.value);})
+
+</script>
+
+</body>
+</html>
